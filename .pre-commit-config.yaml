@@ -3,7 +3,7 @@ repos:
   hooks:
   - id: pyright
     name: pyright
-    entry: uvx pyright --pythonpath .venv/bin/python
+    entry: uvx pyright --pythonpath .venv/Scripts/python.exe
     language: system
     types: [python]
     pass_filenames: false
