@@ -1,0 +1,33 @@
+repos:
+- repo: local
+  hooks:
+  - id: pyright
+    name: pyright
+    entry: uvx pyright --pythonpath .venv/bin/python
+    language: system
+    types: [python]
+    pass_filenames: false
+  - id: black
+    name: black
+    entry: uvx black src/
+    language: system
+    types: [python]
+    pass_filenames: false
+  - id: codespell
+    name: codespell
+    entry: uvx codespell
+    language: system
+    types: [python]
+    pass_filenames: false
+  - id: ruff
+    name: ruff
+    entry: uvx ruff check
+    language: system
+    types: [python]
+    pass_filenames: false
+  - id: isort
+    name: isort
+    entry: uvx isort src/ --profile black
+    language: system
+    types: [python]
+    pass_filenames: false

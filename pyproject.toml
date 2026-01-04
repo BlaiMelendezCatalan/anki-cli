@@ -1,0 +1,19 @@
+[project]
+name = "anki-cli"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "anki>=25.9.2",
+    "click>=8.3.1",
+    "httpx>=0.28.1",
+]
+
+[dependency-groups]
+style = [
+    "pre-commit>=4.5.1",
+]
+tests = [
+    "pytest>=9.0.2",
+]
