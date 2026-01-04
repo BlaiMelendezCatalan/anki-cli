@@ -6,6 +6,8 @@ from pathlib import Path
 import click
 from anki.collection import Collection
 
+from anki_cli.database import DatabaseManager
+
 
 def _generic_expection(e: Exception):
     click.secho(f"Error: {e}\n{traceback.format_exc()}", err=True, fg="red")
@@ -42,8 +44,12 @@ def new(collection_name: str, collection_dir: Path):
         else collection_name + ".anki2"
     )
     collection_path = (collection_dir / collection_name).resolve()
-    col = Collection(str(collection_path))
-    print(col.sched.deck_due_tree())
+    try:
+        _ = Collection(str(collection_path))
+        db_manager = DatabaseManager()
+        db_manager.add_collection(collection_name, collection_path)
+    except Exception as e:
+        _generic_expection(e)
 
 
 def entry_point():
